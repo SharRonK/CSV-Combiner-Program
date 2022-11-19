@@ -53,6 +53,7 @@ def csv_combiner(argv):
 			sys.exit("\033[1m" + "Inputs have different columns" + "\033[0m")
 
 		df1 = pd.read_csv(file, chunksize = 100000)
+		# to deal with very large files
 		for i in df1:
 			i["filename"] = os.path.basename(file) 
 			df = pd.concat([df, i])
